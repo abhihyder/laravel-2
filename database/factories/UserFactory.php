@@ -1,0 +1,47 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\User;
+use Faker\Generator as Faker;
+use Illuminate\Support\Str;
+
+/*
+|--------------------------------------------------------------------------
+| Model Factories
+|--------------------------------------------------------------------------
+|
+| This directory should contain each of the model factory definitions for
+| your application. Factories provide a convenient way to generate new
+| model instances for testing / seeding your application's database.
+|
+*/
+
+$factory->define(App\Models\User::class, function (Faker $faker) {
+    return [
+        'userName' => $faker->unique()->userName,
+        'email' => $faker->unique()->safeEmail,
+        'password' => md5('123456'), // password
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker $faker) {
+    $category=$faker->unique()->name;
+    $slug=Str::slug($category);
+    return [
+        'name' => $category,
+        'slug' => $slug,
+        'status' => 1,
+    ];
+});
+
+$factory->define(App\Models\Post::class, function (Faker $faker) {
+    return [
+        'user_id'=> random_int(1,5),
+        'category_id'=> random_int(1,5),
+        'title' => $faker->realText(60),
+        'content' => $faker->realText(),
+        'thumbnail_image' => $faker->imageUrl(),
+
+    ];
+});
