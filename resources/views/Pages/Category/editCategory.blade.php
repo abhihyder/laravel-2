@@ -1,8 +1,8 @@
 @extends('welcome')
 @section('category')
 <div class="container">
-  <a href="{{url('category')}}" class="btn btn-success">All Category</a>
-       <h3> Create new category</h3>
+  <a href="{{url('category')}}" class="btn btn-success">Back</a>
+       <h3> Edit category</h3>
        <hr>
             <!-- Error massese-->
             @if ($errors->any())
@@ -16,21 +16,24 @@
             @endif
     <div class="row">
 
-        <form action="{{url('category')}}" method="post">
+        <form action="{{url('category/'.$categories->id)}}" method="post">
         @csrf
+        @method('PUT')
+
+           
             <div class="form-group">
                 <label>Category Name</label>
-                <input type="text" class="form-control" placeholder="Insert name" name="name" value="{{old('name')}}">
+                <input type="text" class="form-control" placeholder="Insert name" name="name" value="{{$categories->name}}">
             </div>
             <div class="form-group">
                 <label>Category Status</label>
                 <select name="status" id="" class="form-control">
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                    <option value="1" @if($categories->status == 1) selected @endif>Active</option>
+                    <option value="0" @if($categories->status == 0) selected @endif>Inactive</option>
                 </select>
             </div>
         
-            <button type="submit" class="btn btn-success">Create</button>
+            <button type="submit" class="btn btn-success">Update</button>
             <button type="reset" class="btn btn-info">Reset</button>
         </form>
     </div>

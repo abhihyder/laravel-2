@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Category; // Have to include this directory line
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -39,7 +41,29 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+       
+        $validator = Validator::make($request->all(), [
+            'name'   => 'required |unique:categories,name| min:3',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('category/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $data=[
+            'name'  => $request->name,
+            'slug'  => Str::slug($request->name),
+            'status'=> $request->status
+
+        ];
+       
+       Category::create($data);
+
+       
+       return redirect()->back();
     }
 
     /**
@@ -50,7 +74,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $sql['categories']= Category::select('id','name', 'slug', 'status', 'created_at')->find($id);
+        return view('Pages.Category.singleCategory', $sql);
     }
 
     /**
@@ -61,7 +86,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sql['categories']= Category::select('id','name', 'status', )->find($id);
+        return view('Pages.Category.editCategory', $sql);
     }
 
     /**
@@ -73,7 +99,32 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            //validation
+       
+            $validator = Validator::make($request->all(), [
+                'name'   => 'required | min:3|unique:categories,name,'.$id,
+            ]);
+    
+            if ($validator->fails()) {
+                return redirect('category/'.$id.'/edit')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+    
+            $data=[
+                'name'  => $request->name,
+                'slug'  => Str::slug($request->name),
+                'status'=> $request->status
+    
+            ];
+
+            $cat=Category::find($id); //fetch data
+            $cat->update($data); // Update data
+
+
+           //return response()->json($data);
+           
+           return redirect('category/'.$id);
     }
 
     /**
@@ -84,6 +135,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+       $cat= Category::find($id); //fetch data
+       $cat->delete(); // Data delete
+       return redirect('category');
     }
+ 
 }

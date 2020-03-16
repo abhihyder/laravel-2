@@ -2,6 +2,12 @@
 @section('category')
 <div class="container">
     <div class="row">
+       
+        <a href="{{url('category/create')}}" class="btn btn-success">Add Category</a>   </div>
+       
+        <h2>Category List</h2>
+        <hr>
+ 
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -21,13 +27,13 @@
                 <td>
                     <a class="btn btn-success" href="{{url('category/'.$data->id)}}">Details</a>
                     <a class="btn btn-info" href="{{url('category/'.$data->id.'/edit')}}">Edit</a>
-                    <a class="btn btn-danger" href="">Delete</a>
+            
                 </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        {{ $categories->links() }}
+        {{ $categories->links() }} 
     </div>
 </div>
 
