@@ -1,6 +1,6 @@
 @extends('welcome')
 
-@section('register')
+@section('content')
 <div class="container">
             <!-- Error massese-->
             @if ($errors->any())
@@ -12,6 +12,9 @@
                     </ul>
                 </div>
             @endif
+
+    <h3>Register your name</h3>
+    <hr>
     <div class="row">
     
   

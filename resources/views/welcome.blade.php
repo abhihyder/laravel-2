@@ -13,6 +13,9 @@
 
     </head>
     <body>
+
+    <!-- Nav bar start-->
+
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,7 +31,7 @@
                         </li>
                        
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Contact</a>
+                            <a class="nav-link " href="{{url('post')}}">Blog</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="{{route('reg')}}">Register</a>
@@ -45,10 +48,12 @@
                 </nav>
             </div>
         </div>
-     
 
-    @yield('register')
-    @yield('category')
+ <!-- Nav bar end-->
+
+
+ <!-- Content start-->
+    @yield('content')
 
     </body>
 </html>

@@ -12,10 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Pages.index');
 });
 Route::get('/register', 'AuthController@showRegForm')->name('reg');
 Route::post('/register/data', 'AuthController@processRegister')->name('register');
 
 //-------Category 
 Route::Resource('category', 'CategoryController');
+
+
+//-------Post 
+Route::Resource('post', 'PostController');

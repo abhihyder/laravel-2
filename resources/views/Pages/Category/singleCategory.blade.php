@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('category')
+@section('content')
 <div class="container">
     <div class="row">
        

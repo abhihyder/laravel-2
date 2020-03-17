@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         //$sql['categories']= Category::all(); // for data
-        $sql['categories']= Category::select('id','name', 'slug', 'status')->orderBy('name', 'asc')->paginate(5); // for paginate data
+        $sql['categories']= Category::select('id','name', 'slug', 'status')->orderBy('id', 'desc')->paginate(5); // for paginate data
         //$sql['categories']= Category::select('id','name', 'slug', 'status')->orderBy('id', 'desc')->get(); // for selected data
         //$sql['categories']= Category::select('id','name', 'slug', 'status')->where('status', 0)->get(); // for conditional query
         return view('Pages.Category.category', $sql);

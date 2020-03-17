@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('category')
+@section('content')
 <div class="container">
   <a href="{{url('category')}}" class="btn btn-success">All Category</a>
        <h3> Create new category</h3>

@@ -19,9 +19,10 @@ use Illuminate\Support\Str;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
-        'userName' => $faker->unique()->userName,
-        'email' => $faker->unique()->safeEmail,
-        'password' => md5('123456'), // password
+        'name'      => $faker->name,
+        'user'  => $faker->unique()->userName,
+        'email'     => $faker->unique()->safeEmail,
+        'password'  => md5('123456'), // password
     ];
 });
 
@@ -37,8 +38,8 @@ $factory->define(App\Models\Category::class, function (Faker $faker) {
 
 $factory->define(App\Models\Post::class, function (Faker $faker) {
     return [
-        'user_id'=> random_int(1,5),
-        'category_id'=> random_int(1,5),
+        'user_id'=> random_int(1,10),
+        'category_id'=> random_int(1,10),
         'title' => $faker->realText(60),
         'content' => $faker->realText(),
         'thumbnail_image' => $faker->imageUrl(),
