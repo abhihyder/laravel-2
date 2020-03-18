@@ -30,16 +30,16 @@ $factory->define(App\Models\Category::class, function (Faker $faker) {
     $category=$faker->unique()->name;
     $slug=Str::slug($category);
     return [
-        'name' => $category,
-        'slug' => $slug,
-        'status' => 1,
+        'name'   => $category,
+        'slug'   => $slug,
+        'status' => random_int(0,1),
     ];
 });
 
 $factory->define(App\Models\Post::class, function (Faker $faker) {
     return [
-        'user_id'=> random_int(1,10),
-        'category_id'=> random_int(1,10),
+        'user_id'=> random_int(1,3),
+        'category_id'=> random_int(1,3),
         'title' => $faker->realText(60),
         'content' => $faker->realText(),
         'thumbnail_image' => $faker->imageUrl(),

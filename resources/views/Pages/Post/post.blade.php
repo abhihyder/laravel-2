@@ -15,8 +15,8 @@
                 <th>Author</th>
                 <th>Category</th>
                 <th>Title</th>
-                <th>Content</th>
                 <th>Status</th>
+                <th>Created</th>
                 <th>Action</th>
                 </tr>
             </thead>
@@ -27,12 +27,11 @@
                 <td>{{$data->user->name}}</td>
                 <td>{{$data->category->name}}</td>
                 <td>{{$data->title}}</td>
-                <td>{{$data->content}}</td>
                 <td>{{$data->status }}</td>
+                <td>{{$data->created_at->format('F d, Y')}}</td>
+                <!--<td>{{$data->created_at->diffForHumans()}}</td>-->
                 <td>
-                    <a class="btn btn-success" href="{{url('post/'.$data->id)}}">Details</a>
-                    <a class="btn btn-info" href="{{url('post/'.$data->id.'/edit')}}">Edit</a>
-            
+                    <a class="btn btn-success" href="{{url('post/'.$data->id)}}">Details</a>            
                 </td>
                 </tr>
             @endforeach

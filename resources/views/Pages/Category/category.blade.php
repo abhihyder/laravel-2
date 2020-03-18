@@ -4,7 +4,7 @@
     <div class="row">
        
         <a href="{{url('category/create')}}" class="btn btn-success">Add Category</a>   </div>
-       
+       <br>
         <h2>Category List</h2>
         <hr>
  
@@ -14,6 +14,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Slug</th>
+                <th>Status</th>
                 <th>Action</th>
                 </tr>
             </thead>

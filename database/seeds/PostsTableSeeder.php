@@ -11,7 +11,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Post::class, 10)->create();
+        factory(App\Models\Post::class, 30)->create();
         // \App\Models\Post::create([
         //     'user_id'       =>1,
         //     'category_id'   =>1,

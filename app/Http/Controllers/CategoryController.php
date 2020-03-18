@@ -74,7 +74,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $sql['categories']= Category::select('id','name', 'slug', 'status', 'created_at')->find($id);
+        $sql['categories']= Category::with('posts', 'posts.user')->select('id','name', 'slug', 'status', 'created_at')->find($id); // one to many Relationship
         return view('Pages.Category.singleCategory', $sql);
     }
 

@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('title', 128);
             $table->longText('content');
             $table->string('thumbnail_image', 128);
-            $table->string('status', 128)->default('draft');
+            $table->string('status', 128)->default('Draft');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
