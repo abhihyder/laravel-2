@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+   
     
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,17 @@ class Post extends Model
         'content',
         'thumbnail_image',
         'status'
+    ];
+
+         /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => PostCreated::class,
+        'updated' => PostUpdated::class,
+        'deleted' => PostDeleted::class,
     ];
 
     // one to one join for category------------------------------

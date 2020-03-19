@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Pages.index');
-});
+Route::get('/', 'Controller@index');
 Route::get('/register', 'AuthController@showRegForm')->name('reg');
 Route::post('/register/data', 'AuthController@processRegister')->name('register');
 

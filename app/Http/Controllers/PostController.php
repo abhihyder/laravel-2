@@ -15,9 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $sql['posts']=cache('posts', function(){
-           return Post::with('category', 'user')->select('id','user_id', 'category_id', 'title', 'status', 'created_at')->orderBy('created_at', 'desc')->take(10)->get();
-        });
+        $sql['posts']= Post::with('category', 'user')->select('id','user_id', 'category_id', 'title', 'status', 'created_at')->orderBy('created_at', 'desc')->paginate(10);;
         return view('Pages.Post.post', $sql);
     }
 
