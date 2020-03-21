@@ -28,11 +28,11 @@ class Post extends Model
      *
      * @var array
      */
-    protected $dispatchesEvents = [
-        'created' => PostCreated::class,
-        'updated' => PostUpdated::class,
-        'deleted' => PostDeleted::class,
-    ];
+    // protected $dispatchesEvents = [
+    //     'created' => PostCreated::class,
+    //     'updated' => PostUpdated::class,
+    //     'deleted' => PostDeleted::class,
+    // ];
 
     // one to one join for category------------------------------
     public function category() // we can dicleare any method name

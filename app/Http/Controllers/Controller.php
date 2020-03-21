@@ -13,10 +13,7 @@ class Controller extends BaseController
 
     public function index()
     {
-        $sql['articles']=cache('articles', function()
-        {
-            return Post::with('category', 'user')->select('id','user_id', 'category_id', 'title', 'status', 'created_at')->orderBy('created_at', 'desc')->take(5)->get();
-        });
+        $sql['articles']= Post::with('category', 'user')->select('id','user_id', 'category_id', 'title', 'status', 'created_at')->orderBy('created_at', 'desc')->take(5)->get();
         return view('Pages.index', $sql);
     }
 }

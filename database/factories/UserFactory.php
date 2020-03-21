@@ -20,9 +20,15 @@ use Illuminate\Support\Str;
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'name'      => $faker->name,
-        'user'  => $faker->unique()->userName,
+        'user'      => $faker->unique()->userName,
         'email'     => $faker->unique()->safeEmail,
         'password'  => md5('123456'), // password
+        'gender'    => $faker->randomElement(['Male', 'Female', 'Others']), 
+        'birthday'  =>$faker->date($format = 'Y-m-d', $max = 'now'),
+        'photo'     =>$faker->unique()->imageUrl(),
+        'email_verified'=>1,
+        'email_verified_at'=>\Carbon\Carbon::now(),
+        'email_verification_token'=>'',
     ];
 });
 

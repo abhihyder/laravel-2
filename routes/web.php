@@ -12,9 +12,8 @@
 */
 
 Route::get('/', 'Controller@index');
-Route::get('/register', 'AuthController@showRegForm')->name('reg');
-Route::post('/register/data', 'AuthController@processRegister')->name('register');
 
+Route::Resource('register', 'UserController');
 //-------Category 
 Route::Resource('category', 'CategoryController');
 

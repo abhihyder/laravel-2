@@ -34,7 +34,7 @@
                             <a class="nav-link " href="{{url('post')}}">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{route('reg')}}">Register</a>
+                            <a class="nav-link " href="{{url('register')}}">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="{{url('category')}}">Category</a>
