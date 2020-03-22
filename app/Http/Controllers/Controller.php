@@ -16,4 +16,9 @@ class Controller extends BaseController
         $sql['articles']= Post::with('category', 'user')->select('id','user_id', 'category_id', 'title', 'status', 'created_at')->orderBy('created_at', 'desc')->take(5)->get();
         return view('Pages.index', $sql);
     }
+
+    public function verifyEmail($token)
+    {
+
+    }
 }

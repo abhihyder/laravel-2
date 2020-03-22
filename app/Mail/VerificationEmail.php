@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 class VerificationEmail extends Mailable
 {
+ 
     use Queueable, SerializesModels;
 
     /**
@@ -16,9 +17,9 @@ class VerificationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+       $this->user= $user;
     }
 
     /**
@@ -28,6 +29,6 @@ class VerificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('Pages.Email.verification');
+        return $this->view('Pages.Email.verification')->with('user', $this->user);
     }
 }

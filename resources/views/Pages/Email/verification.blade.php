@@ -14,14 +14,16 @@
     </head>
     <body>
     <div class="container">
-        <p>Dear user</p>
+        <p>Dear {{$user->name}}</p>
         <p>Your account has been created! Please the following link to activate your account.</p>
-        <a href=""></a>
+        <a href="{{route('verify', $user->email_verification_token)}}">
+        {{route('verify', $user->email_verification_token)}}
+        </a>
+
         <br>
         <p>Thanks</p>
     
     </div>
-    <p>Dear user</p>
 
     </body>
 </html>

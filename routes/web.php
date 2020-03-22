@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'Controller@index');
+Route::get('verify/{token}', 'Controller@verifyEmail');
 
 Route::Resource('register', 'UserController');
 //-------Category 
