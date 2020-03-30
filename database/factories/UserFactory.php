@@ -5,6 +5,7 @@
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,10 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'birthday'  =>$faker->date($format = 'Y-m-d', $max = 'now'),
         'photo'     =>$faker->unique()->imageUrl(),
         'email_verified'=>1,
-        'email_verified_at'=>\Carbon\Carbon::now(),
+        'email_verified_at'=> now()->subDay(10),
         'email_verification_token'=>'',
+        'last_login'=> now()->subDay(7),
+
     ];
 });
 
