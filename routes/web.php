@@ -13,6 +13,7 @@
 
 Route::get('/', 'Controller@index');
 
+
 // Login proccess 
 Route::get('login', 'AuthController@showLoginForm');
 Route::get('logout', 'AuthController@processLogout');
